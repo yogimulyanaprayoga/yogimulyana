@@ -71,7 +71,7 @@ const experiences = [
   {
     id: 2,
     period: "2023 - Present",
-    title: "Freelancer (Junior Engineer)",
+    title: "Freelancer",
     description:
       "Build, organize, and deliver high-quality websites, design systems, and digital experiences for a variety of projects for clients including wedding invitation websites, organizational websites, and more.",
     tags: ["HTML", "CSS", "Javascript"],

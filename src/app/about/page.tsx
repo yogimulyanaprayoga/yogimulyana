@@ -101,16 +101,13 @@ const AboutPage = () => {
           <section className="mb-2">
             <hr className="border-dotted mt-4 mb-6" />
             <p className="text-sm dark:text-gray-200">
-              {"I am"} dedicated to crafting user experiences and interfaces
-              that transcend the boundaries of websites and mobile apps, delving
-              into the vast domain of user interaction where every detail
-              matters. My passion lies in the interplay between design and
-              technology, where
-              {"I've"} sharpened my abilities to simplify intricate concepts
-              into accessible, visually compelling experiences. In my work, I
-              strive to harness the full spectrum of UX principles to ensure
-              that each product not only resonates aesthetically but also
-              operates with seamless, intuitive functionality.
+              {"I am"} dedicated to creating the user experience and interface
+              of the projects I have created. My interest lies in web
+              development, both front-end and back-end, where I sharpen my
+              skills to improve my abilities in the web development process. In
+              my work, I try to maximize the performance I have so that the
+              projects I create can operate with smooth and intuitive
+              functionality.
             </p>
           </section>
         </div>
@@ -121,13 +118,12 @@ const AboutPage = () => {
       <div className="max-w-3xl mx-auto dark:bg-[#3c8b89] dark:bg-opacity-5 p-4 rounded-md bg-[#3c8b89] bg-opacity-5 overflow-hidden">
         <h4 className="text-xl md:text-2xl mb-2 dark:text-white">Stack</h4>
         <p className="text-sm dark:text-gray-200">
-          My design and development arsenal encompasses a versatile range of
-          tools such as Framer, Figma, Adobe XD, Sketch, and the Adobe Creative
-          Suite for crafting intuitive user interfaces. Beyond these, {"I'm"}{" "}
-          adept in React JS and Flutter, which empower me to create dynamic,
-          cross-platform user experiences. While these are my primary tools, my
-          skill set is ever-expanding, not confined to these alone, ensuring
-          adaptability and innovation in all my projects.
+          In web development I use technologies such as ReactJS, NextJS,
+          Laravel, CodeIgniter, Prisma, and TailwindCSS to create a project that
+          the client wants. with this technology I intend to create a dynamic
+          cross-platform user experience. Although this is my primary tool, my
+          skillset continues to grow, not just limited to this tool alone,
+          ensuring adaptability and innovation in all my projects.
         </p>
         <figure className="mt-4">
           <div className="flex flex-wrap gap-2 md:gap-4 text-3xl text-gray-700 dark:text-gray-200">
