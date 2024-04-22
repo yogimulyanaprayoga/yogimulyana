@@ -1,23 +1,44 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-import Link from "next/link";
-import Footer from "@/components/footer/Footer";
-import Navbar from "@/components/pagination/Pagination";
-import Featured from "@/components/featured/Featured";
-import CategoryList from "@/components/categoryList/CategoryList";
-import CardList from "@/components/cardList/CardList";
-import Menu from "@/components/menu/Menu";
+import Seo from "@/components/Seo";
+import Card from "@/components/content/Card";
+import AboutCard from "@/components/content/about/AboutCard";
+import BlogCard from "@/components/content/blog/BlogCard";
+import ExperienceCard from "@/components/content/experience/ExperienceCard";
+import ProjectCard from "@/components/content/projects/ProjectCard";
+import Layout from "@/components/layout/Layout";
+import { sortByDate } from "@/lib/mdx.client";
+import { getAllFilesFrontmatter } from "@/lib/mdx.server";
 
-export default function Home({ searchParams }: any) {
-  const page = parseInt(searchParams.page) || 1;
+const page = async () => {
+  const filesBlog = await getAllFilesFrontmatter("blog");
+  const posts = sortByDate(filesBlog);
+
+  const filesProject = await getAllFilesFrontmatter("projects");
+  const projects = sortByDate(filesProject);
   return (
-    <div className={styles.container}>
-      <Featured />
-      <CategoryList />
-      <div className={styles.content}>
-        <CardList page={page} />
-        <Menu />
-      </div>
-    </div>
+    <>
+      <main className="py-6 px-4">
+        {/* About */}
+        <AboutCard />
+
+        {/* Experience */}
+        <ExperienceCard />
+
+        {/* Blog */}
+        <Card>
+          {posts.map((post) => (
+            <BlogCard key={post.slug} post={post} />
+          ))}
+        </Card>
+
+        {/* Project */}
+        <Card isProject={true}>
+          {projects.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
+          ))}
+        </Card>
+      </main>
+    </>
   );
-}
+};
+
+export default page;

@@ -7,77 +7,218 @@
   --textColor: black;
   --softBg: #f0f0f0;
   --softTextColor: #626262;
+  --dark-navy: #020c1b;
+  --navy: #0a192f;
+  --light-navy: #112240;
+  --lightest-navy: #233554;
+  --navy-shadow: rgba(2, 12, 27, 0.7);
+  --dark-slate: #495670;
+  --slate: #8892b0;
+  --light-slate: #a8b2d1;
+  --lightest-slate: #ccd6f6;
+  --white: #e6f1ff;
+  --green: #66ffdb;
+  --green-tint: rgba(100, 255, 218, 0.1);
+  --pink: #f57dff;
+  --blue: #57cbff;
+
+  /* --tw-clr-primary-200: 219 255 0; */
+  --tw-clr-primary-200: 102, 255, 219;
+  --tw-clr-primary-300: 87, 203, 255;
+  --tw-clr-primary-400: 0 224 243;
+  --tw-clr-primary-500: 0 196 253;
+
+  --clr-primary-200: rgb(var(--tw-clr-primary-200)); /* #66ffdb */
+  --clr-primary-300: rgb(var(--tw-clr-primary-300)); /* #57cbff */
+  --clr-primary-400: rgb(var(--tw-clr-primary-400)); /* #00e0f3 */
+  --clr-primary-500: rgb(var(--tw-clr-primary-500)); /* #00c4fd */
 }
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+@layer base {
+  @font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: optional;
+    src: url("/fonts/inter-var-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
+      U+2215, U+FEFF, U+FFFD;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  ::selection {
+    background-color: var(--lightest-navy);
+    color: var(--lightest-slate);
+  }
+
+  .cursor-newtab {
+    cursor: url("/images/new-tab.png") 10 10, pointer;
+  }
+
+  /* #region  /**=========== Default Typography =========== */
+  h1,
+  .h1 {
+    @apply font-primary text-2xl font-bold md:text-4xl;
+  }
+
+  h2,
+  .h2 {
+    @apply font-primary text-xl font-bold md:text-3xl;
+  }
+
+  h3,
+  .h3 {
+    @apply font-primary text-lg font-bold md:text-2xl;
+  }
+
+  h4,
+  .h4 {
+    @apply font-primary text-base font-bold md:text-lg;
+  }
+
+  body,
+  .body {
+    @apply font-primary text-sm md:text-base;
+  }
+  /* #endregion  /**======== Default Typography =========== */
+
+  .layout {
+    max-width: 68rem;
+    @apply mx-auto w-11/12;
+  }
+
+  .bg-dark a.custom-link {
+    @apply border-gray-200 hover:border-gray-200/0;
+  }
+
+  .min-h-main {
+    @apply min-h-[calc(100vh-82px)];
+  }
+  .accent {
+    @apply dark:bg-primary-200 dark:bg-clip-text dark:text-transparent;
+  }
+
+  .accent-highlight {
+    @apply bg-primary-300/50 dark:bg-gradient-to-tr dark:from-primary-300 dark:to-primary-400 dark:bg-clip-text dark:text-transparent;
+  }
 }
 
-.dark {
-  --bg: #0f172a;
-  --textColor: #ddd;
-  --softBg: #1f273a;
-  --softTextColor: #a6a6a6;
+@layer utilities {
+  .animated-underline {
+    background-image: linear-gradient(#33333300, #33333300),
+      linear-gradient(to right, var(--clr-primary-200), var(--clr-primary-300));
+    background-size: 100% 2px, 0 2px;
+    background-position: 100% 100%, 0 100%;
+    background-repeat: no-repeat;
+    transition: 0.3s ease;
+    transition-property: background-size, color, background-color, border-color;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animated-underline {
+      transition: none;
+    }
+  }
+  .animated-underline:hover,
+  .animated-underline:focus-visible,
+  .project-card:hover .animated-underline,
+  .project-card:focus-visible .animated-underline {
+    background-size: 0 2px, 100% 2px;
+  }
+
+  /* #region  /**=========== Animate Shadow =========== */
+  .animate-shadow {
+    @apply after:absolute after:inset-0 after:z-[-1] after:opacity-0 after:transition-opacity hover:after:opacity-100;
+    @apply after:shadow-md dark:after:shadow-none;
+  }
+  /* #endregion  /**======== Animate Shadow =========== */
+
+  /* #region  /**=========== Fade In =========== */
+  [data-fade] {
+    @apply translate-y-10 opacity-0 transition duration-300 ease-out motion-reduce:translate-y-0 motion-reduce:opacity-100;
+  }
+  .fade-in-start [data-fade] {
+    @apply translate-y-0 opacity-100;
+  }
+  .fade-in-start [data-fade="1"] {
+    transition-delay: 100ms;
+  }
+  .fade-in-start [data-fade="2"] {
+    transition-delay: 200ms;
+  }
+  .fade-in-start [data-fade="3"] {
+    transition-delay: 300ms;
+  }
+  .fade-in-start [data-fade="4"] {
+    transition-delay: 400ms;
+  }
+  .fade-in-start [data-fade="5"] {
+    transition-delay: 500ms;
+  }
+  .fade-in-start [data-fade="6"] {
+    transition-delay: 600ms;
+  }
+  .fade-in-start [data-fade="7"] {
+    transition-delay: 700ms;
+  }
+  .fade-in-start [data-fade="8"] {
+    transition-delay: 800ms;
+  }
+  .fade-in-start [data-fade="9"] {
+    transition-delay: 900ms;
+  }
+  /* #endregion  /**======== Fade In =========== */
 }
 
-body {
-  max-width: 100%;
-  overflow-x: hidden;
+.prose {
+  max-width: 50rem;
 }
 
-a {
-  color: inherit;
+.prose a {
   text-decoration: none;
 }
 
-.contain {
-  min-height: 100vh;
-  background-color: var(--bg);
-  color: var(--textColor);
+.prose > ol > li > :last-child,
+.prose > ul > li > :last-child {
+  margin-bottom: 0;
+}
+.prose > ol > li > :first-child,
+.prose > ul > li > :first-child {
+  margin-top: 0;
 }
 
-.wrapper {
-  max-width: 1536px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 80px;
-  padding-right: 80px;
+.prose blockquote p:first-of-type::before,
+.prose blockquote p:last-of-type::after {
+  content: "";
 }
 
-@media screen and (max-width: 1536px) {
-  .wrapper {
-    max-width: 1366px;
-  }
-}
-@media screen and (max-width: 1280px) {
-  .wrapper {
-    max-width: 1024px;
-  }
-}
-@media screen and (max-width: 1024px) {
-  .wrapper {
-    max-width: 768px;
-    padding-left: 40px;
-    padding-right: 40px;
-  }
-}
-@media screen and (max-width: 768px) {
-  .wrapper {
-    max-width: 640px;
-  }
-}
-@media screen and (max-width: 640px) {
-  .wrapper {
-    max-width: 475px;
-  }
+.prose blockquote {
+  border-style: solid;
+  border-width: 0 0 0 0.25rem;
+  border-image: linear-gradient(to top, #00ff94, #00e0f3, #00c4fd) 1;
 }
 
-.ql-container {
-  font-size: 28px !important;
+.prose hr {
+  border-style: solid;
+  border-width: 0 0 1px 0;
+  border-image: linear-gradient(to right, #00ff9480, #00e0f380, #00c4fd80) 1;
 }
 
-.quill > .ql-container > .ql-editor.ql-blank::before {
-  color: #b3b3b1;
+.prose pre {
+  @apply rounded-md !px-4 text-black dark:text-gray-400 bg-slate-800/5 dark:bg-slate-800/20;
+}
+
+.prose pre > code {
+  @apply grid;
+  counter-reset: line;
 }
