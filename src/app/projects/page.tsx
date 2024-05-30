@@ -2,14 +2,19 @@
 // import ProjectCard from "@/components/cards/ProjectCard";
 import { sortByDate } from "@/lib/mdx.client";
 import { getAllFilesFrontmatter } from "@/lib/mdx.server";
-import { InferGetStaticPropsType } from "next";
-import React from "react";
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-import Link from "next/link";
-import CloudinaryImg from "@/components/images/CloudinaryImage";
+import { Metadata } from "next";
 import ProjectCard from "@/components/content/projects/ProjectCard";
+import { METADATA } from "@/constant/metadata";
+
+export const metadata: Metadata = {
+  title: `Projects ${METADATA.exTitle}`,
+  description: "Software Engineer portfolio ideas",
+  keywords:
+    "portfolio yogi mulyana prayoga, project yogi mulyana, yogimulyana, projects",
+  alternates: {
+    canonical: `${process.env.DOMAIN}/projects`,
+  },
+};
 
 export default async function ProjectPage() {
   const files = await getAllFilesFrontmatter("projects");

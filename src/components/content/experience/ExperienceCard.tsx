@@ -1,8 +1,4 @@
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
 import Tag from "../Tag";
-import Accent from "@/components/Accent";
 import clsx from "clsx";
 
 const ExperienceCard = () => {

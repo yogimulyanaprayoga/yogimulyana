@@ -1,9 +1,17 @@
 import { getAllFilesFrontmatter } from "@/lib/mdx.server";
-import { getTags, sortByDate } from "@/lib/mdx.client";
+import { sortByDate } from "@/lib/mdx.client";
 import BlogCard from "@/components/content/blog/BlogCard";
-import { BlogFrontmatter } from "@/types/frontmatters";
-import { useEffect, useState } from "react";
-import Accent from "@/components/Accent";
+import { Metadata } from "next";
+import { METADATA } from "@/constant/metadata";
+
+export const metadata: Metadata = {
+  title: `Blog ${METADATA.exTitle}`,
+  description: "My blogs content about programming and software development",
+  keywords: "blog yogi mulyana prayoga, yogi mulyana, yogimulyana",
+  alternates: {
+    canonical: `${process.env.DOMAIN}/blog`,
+  },
+};
 
 export default async function BlogPage() {
   const files = await getAllFilesFrontmatter("blog");

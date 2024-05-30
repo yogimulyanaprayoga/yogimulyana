@@ -6,24 +6,34 @@ import { ThemeContextProvider } from "@/context/ThemeContext";
 import ThemeProvider from "@/providers/ThemeProvider";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { METADATA } from "@/constant/metadata";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.yogimulyana.vercel.app"),
-  title: {
-    default: "Yogi Mulyana Prayoga",
-    template: `%s | Yogi Mulyana Prayoga`,
+  metadataBase: new URL(
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : process.env.DOMAIN || ""
+  ),
+  description: METADATA.description,
+  keywords: METADATA.keyword,
+  creator: METADATA.creator,
+  authors: {
+    name: METADATA.creator,
+    url: METADATA.openGraph.url,
   },
-  description:
-    "An online portfolio and blog by Yogi Mulyana Prayoga. Showcase of my projects, and some of my thoughts about website development.",
-  authors: [
-    { name: "Yogi Mulyana Prayoga", url: "https://www.yogimulyana.vercel.app" },
-  ],
-  alternates: {
-    canonical: "https://www.yogimulyana.vercel.app",
+  openGraph: {
+    images: METADATA.profile,
+    url: METADATA.openGraph.url,
+    siteName: METADATA.openGraph.siteName,
+    locale: METADATA.openGraph.locale,
+    type: "website",
   },
-  robots: "follow, index",
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
