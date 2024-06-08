@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import { ProjectFrontmatter } from "@/types/frontmatters";
-import BannerImg from "@/components/images/BannerImg";
 import TechIcons, { TechListType } from "@/components/TechIcons";
 import clsx from "clsx";
+import BannerImg from "@/components/images/BannerImg";
 
 type ProjectCardProps = {
   project: ProjectFrontmatter;

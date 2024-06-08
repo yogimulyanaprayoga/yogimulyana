@@ -43,6 +43,7 @@ export type LibraryType = {
 export type ProjectFrontmatter = {
   slug: string;
   title: string;
+  image: string;
   publishedAt: string;
   lastUpdated?: string;
   description: string;
