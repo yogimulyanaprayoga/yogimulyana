@@ -1,6 +1,4 @@
 import React from "react";
-import { HiMiniArrowLongRight } from "react-icons/hi2";
-import Image from "next/image";
 import Link from "next/link";
 import { ProjectFrontmatter } from "@/types/frontmatters";
 import BannerImg from "@/components/images/BannerImg";

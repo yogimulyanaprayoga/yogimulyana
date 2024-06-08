@@ -13,10 +13,6 @@ module.exports = {
   ],
   darkMode: "class",
   theme: {
-    fontFamily: {
-      primary: ["Inter", ...defaultTheme.fontFamily.sans],
-      mono: ["Monolisa", ...defaultTheme.fontFamily.mono],
-    },
     extend: {
       colors: {
         primary: {

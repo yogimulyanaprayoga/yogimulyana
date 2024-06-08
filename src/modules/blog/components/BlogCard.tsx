@@ -1,14 +1,10 @@
 import React from "react";
-import Link from "next/link";
 import { BlogFrontmatter } from "@/types/frontmatters";
 import BannerImg from "@/components/images/BannerImg";
-import Tag from "../Tag";
 import Accent from "@/components/Accent";
 import UnstyledLink from "@/components/links/UnstyledLink";
 import clsx from "clsx";
-// import BannerImg from "../images/BannerImg";
-// import Accent from "../Accent";
-// import Tag from "../content/Tag";
+import Tag from "@/components/content/Tag";
 
 type BlogCardProps = {
   post: BlogFrontmatter;

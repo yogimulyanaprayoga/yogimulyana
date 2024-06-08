@@ -1,14 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
-// import Navbar from "@/components/navbar/Navbar";
-import { ThemeContextProvider } from "@/context/ThemeContext";
-import ThemeProvider from "@/providers/ThemeProvider";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
 import { METADATA } from "@/constant/metadata";
-
-const inter = Inter({ subsets: ["latin"] });
+import { poppins } from "../common/styles/fonts";
+import Layout from "@/components/layout/Layout";
+import ThemeContextProvider from "@/stores/theme";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -43,15 +39,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={poppins.className}>
+        <NextTopLoader
+          color="#05b6d3"
+          initialPosition={0.08}
+          crawlSpeed={200}
+          height={3}
+          crawl={true}
+          showSpinner={true}
+          easing="ease"
+          speed={200}
+          shadow="0 0 10px #05b6d3,0 0 5px #45c6c0"
+        />
         <ThemeContextProvider>
-          <ThemeProvider>
-            <div className="bg-white dark:bg-[#0e1111]">
-              <Navbar />
-              {children}
-              <Footer />
-            </div>
-          </ThemeProvider>
+          <Layout>{children}</Layout>
         </ThemeContextProvider>
       </body>
     </html>

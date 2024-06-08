@@ -1,0 +1,16 @@
+export const SKILLS = [
+  "Next.js",
+  "React.js",
+  "Laravel",
+  "CodeIgniter",
+  "Node JS",
+  "TailwindCSS",
+  "Bootstrap",
+  "Firebase",
+  "PostgreSql",
+  "Prisma",
+  "JavaScript",
+  "TypeScript",
+  "HTML",
+  "CSS",
+];

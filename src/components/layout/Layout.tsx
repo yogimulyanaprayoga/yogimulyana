@@ -1,22 +1,27 @@
-import * as React from "react";
-
+"use client";
 // import sayHello from "@/lib/sayHello";
 
+import { ReactNode, useEffect } from "react";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Navbar";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
-// import { sayHelloFlag } from "@/constants/env";
-import { PreloadProvider } from "@/context/PreloadContext";
+interface LayoutsProps {
+  children: ReactNode;
+}
 
-// let saidHello = !sayHelloFlag;
-
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: LayoutsProps) {
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      delay: 50,
+    });
+  }, []);
   return (
     <>
       <Header />
-      <PreloadProvider>
-        <div id="skip-nav">{children}</div>
-      </PreloadProvider>
+      <main>{children}</main>
       <Footer />
     </>
   );

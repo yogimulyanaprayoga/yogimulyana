@@ -3,8 +3,8 @@ import path from "path";
 import matter from "gray-matter";
 
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { ProjectType } from "@/types/frontmatters";
 import CloudinaryImg from "@/components/images/CloudinaryImage";
+import Breakline from "@/components/BreakLine";
 
 export async function generateStaticParams() {
   const files = fs.readdirSync(path.join("src/contents/projects"));
@@ -35,8 +35,8 @@ export default function Post({ params }: any) {
   const props = getPost(params);
 
   return (
-    <div className="py-6 px-4">
-      <div className="max-w-3xl mx-auto dark:bg-white dark:bg-opacity-10 p-4 rounded-md bg-black bg-opacity-5  overflow-hidden">
+    <div data-aos="fade-left" className="py-6 px-4">
+      <div className="max-w-[854px] mx-auto dark:bg-white dark:bg-opacity-10 p-4 rounded-md bg-black bg-opacity-5  overflow-hidden">
         <CloudinaryImg
           publicId={`yogimulyana/${props.frontmatter.banner}`}
           alt={props.frontmatter.title}
@@ -47,7 +47,7 @@ export default function Post({ params }: any) {
         <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
           {props.frontmatter.description}
         </p>
-        <hr className="mt-4 dark:border-gray-600" />
+        <Breakline />
         <article className="mdx projects prose mx-auto w-full transition-colors dark:prose-invert">
           <MDXRemote source={props.content} />
         </article>

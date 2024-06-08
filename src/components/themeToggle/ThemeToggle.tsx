@@ -1,15 +1,20 @@
 "use client";
-
-import { useContext } from "react";
-import { ThemeContext } from "@/context/ThemeContext";
 import { FiMoon, FiSun } from "react-icons/fi";
+import { useTheme } from "next-themes";
+import useHasMounted from "@/hooks/useHasMounted";
 
 const ThemeToggle = () => {
-  const { toggle, theme } = useContext(ThemeContext);
+  const { setTheme, resolvedTheme } = useTheme();
+  const mounted = useHasMounted();
 
+  const toggleTheme = () => {
+    setTheme(resolvedTheme === "light" ? "dark" : "light");
+  };
+
+  if (!mounted) return null;
   return (
-    <button onClick={toggle}>
-      {theme === "dark" ? <FiSun /> : <FiMoon />}
+    <button onClick={toggleTheme}>
+      {resolvedTheme === "light" ? <FiSun /> : <FiMoon />}
     </button>
   );
 };

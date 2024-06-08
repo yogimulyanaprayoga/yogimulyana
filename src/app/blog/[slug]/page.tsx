@@ -3,10 +3,10 @@ import path from "path";
 import matter from "gray-matter";
 
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { ProjectType } from "@/types/frontmatters";
 import CloudinaryImg from "@/components/images/CloudinaryImage";
 import MDXComponents from "@/components/content/MDXComponents";
 import { Metadata } from "next";
+import Breakline from "@/components/BreakLine";
 // import { title } from "process";
 
 // interface Props {
@@ -60,8 +60,8 @@ export default function Post({ params }: any) {
   const props = getPost(params);
 
   return (
-    <div className="py-6 px-4">
-      <div className="max-w-3xl mx-auto dark:bg-[#3c8b89] dark:bg-opacity-5 p-4 rounded-md bg-[#3c8b89] bg-opacity-5 overflow-hidden">
+    <div data-aos="fade-left" className="py-6 px-4">
+      <div className="max-w-[854px] mx-auto dark:bg-[#3c8b89] dark:bg-opacity-5 p-4 rounded-md bg-[#3c8b89] bg-opacity-5 overflow-hidden">
         <CloudinaryImg
           publicId={`yogimulyana/blog/banner/${props.frontmatter.banner}`}
           alt={`Photo from unsplash: ${props.frontmatter.banner}`}
@@ -73,7 +73,7 @@ export default function Post({ params }: any) {
         <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
           {props.frontmatter.description}
         </p>
-        <hr className="mt-4 dark:border-gray-600" />
+        <Breakline />
         <article className="prose mt-4 w-full transition-colors dark:prose-invert">
           <MDXRemote
             source={props.content}

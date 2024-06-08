@@ -1,8 +1,7 @@
-import { getAllFilesFrontmatter } from "@/lib/mdx.server";
-import { sortByDate } from "@/lib/mdx.client";
-import BlogCard from "@/components/content/blog/BlogCard";
 import { Metadata } from "next";
 import { METADATA } from "@/constant/metadata";
+import Blog from "@/modules/blog";
+import PageHeading from "@/components/PageHeading";
 
 export const metadata: Metadata = {
   title: `Blog ${METADATA.exTitle}`,
@@ -13,66 +12,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function BlogPage() {
-  const files = await getAllFilesFrontmatter("blog");
-
-  const posts = sortByDate(files);
-
-  //#region  //*=========== Search ===========
-  // const [search, setSearch] = useState<string>("");
-  // const [filteredPosts, setFilteredPosts] = useState<Array<BlogFrontmatter>>(
-  //   () => [...posts]
-  // );
-
-  // const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setSearch(e.target.value);
-  // };
-  // const clearSearch = () => setSearch("");
-
-  //#region  //*=========== Post Language Splitter ===========
-  // const englishPosts = filteredPosts.filter((p) => !p.slug.startsWith("id-"));
-  // const bahasaPosts = filteredPosts.filter((p) => p.slug.startsWith("id-"));
-  // const currentPosts = bahasaPosts;
-  //#endregion  //*======== Post Language Splitter ===========
-
-  // const toggleTag = (tag: string) => {
-  // If tag is already there, then remove
-  // if (search.includes(tag)) {
-  //   setSearch((s) =>
-  //     s
-  //       .split(" ")
-  //       .filter((t) => t !== tag)
-  //       ?.join(" ")
-  //   );
-  // } else {
-  // append tag
-  //     setSearch((s) => (s !== "" ? `${s.trim()} ${tag}` : tag));
-  //   }
-  // };
-
-  // const filteredTags = getTags(currentPosts);
-
-  // const checkTagged = (tag: string) => {
-  //   return (
-  //     filteredTags.includes(tag) &&
-  //     search.toLowerCase().split(" ").includes(tag)
-  //   );
-  // };
+export default function BlogPage() {
+  const PAGE_TITLE = "Blogs";
+  const PAGE_DESCRIPTION =
+    "Welcome to my blog! I will share tips and tutorials about website development.";
 
   return (
-    <main>
-      <div className="layout min-h-main py-12">
-        <h1 className="text-3xl md:text-5xl dark:text-white">Blog</h1>
-        <p className="mt-2 text-gray-600 dark:text-gray-300">
-          Thoughts, mental models, and tutorials about front-end development.
-        </p>
-
-        <ul className="mt-6 grid gap-4 grid-cols-1 md:grid-cols-2">
-          {posts.map((post) => (
-            <BlogCard key={post.slug} post={post} />
-          ))}
-        </ul>
-      </div>
-    </main>
+    <div
+      data-aos="fade-left"
+      className="h-screen flex flex-col max-w-[854px] mx-auto p-4"
+    >
+      <PageHeading title={PAGE_TITLE} description={PAGE_DESCRIPTION} />
+      <Blog />
+    </div>
   );
 }
