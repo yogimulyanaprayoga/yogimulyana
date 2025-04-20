@@ -50,6 +50,7 @@ export default function Seo(props: SeoProps) {
   return (
     <Head>
       <title>{meta.title}</title>
+      <meta name="trustpilot-one-time-domain-verification-id" content="69179937-0b78-4430-8ef1-62ae35f34a25"/>
       <meta name="robots" content={meta.robots} />
       <meta content={meta.description} name="description" />
       <meta property="og:url" content={`${meta.url}${pathname}`} />
